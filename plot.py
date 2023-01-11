@@ -8,7 +8,7 @@ def plot_loss(epoch, loss1, loss2):
     plt.xlabel('Epoches')
     plt.ylabel('Loss')
     plt.legend(loc='best')
-    plt.show()
+    # plt.show()
     plt.savefig('Loss.jpg')
 
 
@@ -19,6 +19,6 @@ def plot_acc(epoch, acc1, acc2):
     plt.xlabel('Epoches')
     plt.ylabel('Accuracy')
     plt.legend(loc='best')
-    plt.show()
+    # plt.show()
     plt.savefig('Accuracy.jpg')
 
