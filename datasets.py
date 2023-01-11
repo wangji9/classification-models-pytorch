@@ -12,8 +12,8 @@ def data_transforms(x):
 
     data_transforms = {
         'train': transforms.Compose([
-            transforms.Resize(256),
-            transforms.CenterCrop(224),
+            transforms.Resize(320),
+            transforms.CenterCrop(320),
             # 转换成tensor向量
             transforms.ToTensor(),
             # 对图像进行归一化操作
@@ -21,8 +21,8 @@ def data_transforms(x):
             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
         ]),
         'val': transforms.Compose([
-            transforms.Resize(256),
-            transforms.CenterCrop(224),
+            transforms.Resize(320),
+            transforms.CenterCrop(320),
             transforms.ToTensor(),
             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
         ]),
@@ -72,9 +72,9 @@ class ClassificationDataset(Dataset):
 
 
 if __name__ == '__main__':
-    train_data_dir = r'D:\xunleidownload\Oxford_102_Flowers\data\oxford-102-flowers\train.txt'
-    val_data_dir = r'D:\xunleidownload\Oxford_102_Flowers\data\oxford-102-flowers\valid.txt'
-    datadir_path = r'D:\xunleidownload\Oxford_102_Flowers\data\oxford-102-flowers'
+    train_data_dir = 'Oxford_102_Flowers/data/oxford-102-flowers/train.txt'
+    val_data_dir = 'Oxford_102_Flowers/data/oxford-102-flowers/valid.txt'
+    datadir_path = 'Oxford_102_Flowers/data/oxford-102-flowers'
     train_dataset = ClassificationDataset(datadir_path,train_data_dir,320,320,aug=data_transforms('train'),load_img=load_iamge)
     val_dataset = ClassificationDataset(datadir_path,val_data_dir,320,320,aug=data_transforms('val'),load_img=load_iamge)
     train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
