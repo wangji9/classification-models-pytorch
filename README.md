@@ -5,7 +5,20 @@ Homepage:https://www.robots.ox.ac.uk/~vgg/data/flowers/102/
 
 2023/1/11:创建了图像分类的基本训练、测试框架  
 2023/1/12：add log;add argparse  
-
+# model  
+    mobilenetv1  
+    mobilenetv2  
+    mobilenetv3
+    resnets  
+    shufflenents  
+    squeezenets  
+    densenets  
+    efficientnetv1s  
+    efficientnetv2s  
+    ghostnet  
+    mnasnet  
+    peleenet
+    ...
 
 usage: main.py [-h] [--models MODELS] [--classes CLASSES] [--train_path TRAIN_PATH] [--test_path TEST_PATH] [--epoch EPOCH] [--width WIDTH] [--height HEIGHT] [--train]  
 optional arguments:
@@ -25,3 +38,4 @@ python main.py --train
 ## test  
 python main.py  
 
+https://github.com/megvii-model/ShuffleNet-Series

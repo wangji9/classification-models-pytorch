@@ -8,7 +8,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 class Classification_Test():
-    def __init__(self,models,classes,test_path,width,height) -> None:
+    def __init__(self,model,classes,test_path,width,height) -> None:
         """
         :param models:
         :param classes:
@@ -18,8 +18,8 @@ class Classification_Test():
         """
         self.datadir_path = test_path
         self.test_path = self.datadir_path + '/'+'test.txt'
-        self.modelname = models
-        self.model = getModel(models,classes).to(device)
+        self.modelname = model
+        self.model = getModel(model,classes).to(device)
         self.aug = data_transforms('val',width,height)
 
         fp = open(self.test_path, 'r')

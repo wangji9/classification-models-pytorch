@@ -16,22 +16,24 @@ def del_file(path_data):
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--models', type=str, default="mobilenetv1", help='choose models')
+    parser.add_argument('--model', type=str, default="mobilenetv1", help='choose models')
     parser.add_argument('--classes', type=int, default=102, help='number of categories')
     parser.add_argument('--train_path', type=str, default='D:/xunleidownload/Oxford_102_Flowers/data/oxford-102-flowers', help='train dataset path')
     parser.add_argument('--test_path', type=str, default='D:/xunleidownload/Oxford_102_Flowers/data/oxford-102-flowers', help='test dataset path')
     parser.add_argument('--epoch',type=str,default=10,help='epochs')
     parser.add_argument('--width', type=int, default='320', help='iamge width')
     parser.add_argument('--height', type=int, default='320', help='iamge height')
-
+    parser.add_argument('--batch_size', type=int, default='32', help='batch size')
+    parser.add_argument('--nw', type=int, default='8', help='num workers')
+    parser.add_argument('--dp', action="store_true", default=False, help='DataParallel')
     parser.add_argument('--train', action="store_true", default=False, help='train or test')
 
     opt = parser.parse_args()
 
     if opt.train:
         del_file('log')
-        model = Classification_Train(opt.models,opt.classes,opt.epoch,opt.train_path,opt.width,opt.height)
+        model = Classification_Train(opt.model,opt.classes,opt.epoch,opt.batch_size,opt.nw,opt.dp,opt.train_path,opt.width,opt.height)
         model.train()
     else:
-        model = Classification_Test(opt.models,opt.classes,opt.test_path,opt.width,opt.height)
+        model = Classification_Test(opt.model,opt.classes,opt.test_path,opt.width,opt.height)
         model.test()

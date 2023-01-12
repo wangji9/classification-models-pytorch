@@ -18,7 +18,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 class Classification_Train():
 
-    def __init__(self,models,classes,epoch,datadir_path,width,height):
+    def __init__(self,model,classes,epoch,batch_size,nw,dp,datadir_path,width,height):
         """
         :param models:
         :param classes:
@@ -30,19 +30,23 @@ class Classification_Train():
         self.datadir_path = datadir_path
         self.train_data_dir = self.datadir_path + '/'+'train.txt'
         self.val_data_dir = self.datadir_path + '/'+'valid.txt'
-        self.modelname = models
+        self.modelname = model
         self.epoch = epoch
-
-        # self.model = torch.nn.DataParallel(MobileNetV2(num_classes=102)).to(device)
-        self.model = getModel(models,classes).to(device)
+        self.batch_size = batch_size
+        self.nw = nw
+        self.dp = dp
+        if self.dp:
+            self.model = torch.nn.DataParallel(getModel(model,classes)).to(device)
+        else:
+            self.model = getModel(model,classes).to(device)
 
         self.train_dataset = ClassificationDataset(self.datadir_path, self.train_data_dir, 320, 320,
                                                    aug=data_transforms('train',width,height), load_img=load_iamge)
         self.val_dataset = ClassificationDataset(self.datadir_path, self.val_data_dir, 320, 320,
                                                  aug=data_transforms('val',width,height), load_img=load_iamge)
 
-        self.train_loader = DataLoader(self.train_dataset, batch_size=32, shuffle=True, num_workers=8)
-        self.val_loader = DataLoader(self.val_dataset, batch_size=32, shuffle=False, num_workers=8)
+        self.train_loader = DataLoader(self.train_dataset, batch_size=self.batch_size, shuffle=True, num_workers=self.nw)
+        self.val_loader = DataLoader(self.val_dataset, batch_size=self.batch_size, shuffle=False, num_workers=self.nw)
 
         self.cirterion = nn.CrossEntropyLoss()
         self.optimizer = optim.Adam(self.model.parameters(), lr=0.001)
