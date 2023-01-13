@@ -28,8 +28,7 @@ usage: main.py [-h] [--model MODEL] [--classes CLASSES] [--train_path TRAIN_PATH
                                                                                                                                                                                                                                   
 optional arguments:                                                                                                                                                                                                                
       -h, --help            show this help message and exit                                                                                                                                                                             
-      --model MODEL         mobilenetv1,mobilenetv2,mobilenetv3,resnet18,resnet34,resnet50,resnet101,resnet18, resnet152,resnext50_32x4d,resnext101_32x8d,wide_resnet101_2,wide_resnet50_2,shufflenetv1,shufflenetv2,shufflenetv2p,
-                            squeezenetv1.0,squeezenetv1.1,densenet121,densenet169,densenet201,densenet265,efficientnetb0,efficientnetb1,efficientnetb2, efficientnetb3,efficientnetb4,efficientnetb5,efficientnetb6,efficientnetb7,efficientnets,efficientnetm,efficientnetl, ghostnet,mnasnet,peleenet  
+      --model MODEL         mobilenetv1,mobilenetv2,mobilenetv3,resnet18,resnet34,resnet50,resnet101,resnet18,resnet152,resnext50_32x4d,resnext101_32x8d,wide_resnet101_2,wide_resnet50_2,shufflenetv1,shufflenetv2,shufflenetv2p,squeezenetv1.0,squeezenetv1.1,densenet121,densenet169,densenet201,densenet265,efficientnetb0,efficientnetb1,efficientnetb2, efficientnetb3,efficientnetb4,efficientnetb5,efficientnetb6,efficientnetb7,efficientnets,efficientnetm,efficientnetl, ghostnet,mnasnet,peleenet  
       --classes CLASSES     number of categories  
       --train_path TRAIN_PATH
                             train dataset path  
