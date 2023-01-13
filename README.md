@@ -50,5 +50,9 @@ optional arguments:
 python main.py --train  
 ## Test  
 python main.py  
+## Result  
+![Accuracy_efficientnetb0](https://user-images.githubusercontent.com/66462413/212268847-251a5939-79f3-4c56-a71e-5929115984db.jpg)
+![Loss_efficientnetb0](https://user-images.githubusercontent.com/66462413/212268882-35e8a6c7-a54a-49f5-a158-fd934f85a758.jpg)
+
 ## Reference  
 https://github.com/megvii-model/ShuffleNet-Series
