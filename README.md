@@ -37,5 +37,5 @@ optional arguments:
 python main.py --train  
 ## test  
 python main.py  
-
+## reference  
 https://github.com/megvii-model/ShuffleNet-Series
