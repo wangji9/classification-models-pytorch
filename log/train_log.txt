@@ -1,5 +1,0 @@
-index:   0,epoch:  0 train_loss:3.574889 val_loss:3.506918 train_acc:0.176939 val_acc:0.151961
-index:   1,epoch:  1 train_loss:2.766701 val_loss:2.978712 train_acc:0.303464 val_acc:0.212745
-index:   2,epoch:  2 train_loss:2.384445 val_loss:2.703482 train_acc:0.374207 val_acc:0.293137
-index:   3,epoch:  3 train_loss:2.106019 val_loss:2.400959 train_acc:0.433892 val_acc:0.369608
-index:   4,epoch:  4 train_loss:1.858545 val_loss:2.278137 train_acc:0.489998 val_acc:0.390196
