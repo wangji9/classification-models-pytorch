@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 
-def plot_loss(epoch, loss1, loss2,model):
+def plot_loss(epoch, loss1, loss2,modelname):
     """
 
     :param epoch:
@@ -15,13 +15,14 @@ def plot_loss(epoch, loss1, loss2,model):
     plt.plot(epoch, loss2, '.-', label="Val_Loss")
     plt.xlabel('Epoches')
     plt.ylabel('Loss')
+    plt.title('{}_model'.format(modelname),color='blue',fontstyle='italic')
     plt.legend(loc='best')
     # plt.show()
-    plt.savefig('plot/Loss_{}.jpg'.format(model))
+    plt.savefig('plot/Loss_{}.jpg'.format(modelname))
     plt.close()
 
 
-def plot_acc(epoch, acc1, acc2,model):
+def plot_acc(epoch, acc1, acc2,modelname):
     """
 
     :param epoch:
@@ -35,8 +36,9 @@ def plot_acc(epoch, acc1, acc2,model):
     plt.plot(epoch, acc2, 'o-', label="Val_Accuracy")
     plt.xlabel('Epoches')
     plt.ylabel('Accuracy')
+    plt.title('{}_model'.format(modelname),color='blue',fontstyle='italic')
     plt.legend(loc='best')
     # plt.show()
-    plt.savefig('plot/Accuracy_{}.jpg'.format(model))
+    plt.savefig('plot/Accuracy_{}.jpg'.format(modelname))
     plt.close()
 

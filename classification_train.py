@@ -2,23 +2,22 @@ import torch
 import sys
 
 import torch.nn as nn
-import torch.optim as optim
 
 from torch.utils.data import DataLoader
 from datasets import ClassificationDataset
-from augmentation import load_iamge, data_transforms
-from plot import plot_loss, plot_acc
+from utils.get_aug import load_iamge
+from utils.plot import plot_loss, plot_acc
 from tqdm import tqdm
-from get_models import getModel
-
-
+from utils.get_models import getModel
+from utils.get_aug import getaug
+from utils.get_optim import getoptim
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 class Classification_Train():
 
-    def __init__(self,model,classes,epoch,batch_size,nw,dp,datadir_path,width,height):
+    def __init__(self,model,aug,lr,optimizer,classes,epoch,batch_size,nw,dp,datadir_path,size):
         """
         :param models:
         :param classes:
@@ -27,6 +26,13 @@ class Classification_Train():
         :param width:
         :param height:
         """
+        self.size = size
+        self.lr = lr
+
+
+        train_transform, test_transform = getaug(aug, self.size)
+        self.train_transform = train_transform
+        self.test_transform = test_transform
         self.datadir_path = datadir_path
         self.train_data_dir = self.datadir_path + '/'+'train.txt'
         self.val_data_dir = self.datadir_path + '/'+'valid.txt'
@@ -35,23 +41,27 @@ class Classification_Train():
         self.batch_size = batch_size
         self.nw = nw
         self.dp = dp
+
         if self.dp:
             self.model = torch.nn.DataParallel(getModel(model,classes)).to(device)
         else:
             self.model = getModel(model,classes).to(device)
 
         self.train_dataset = ClassificationDataset(self.datadir_path, self.train_data_dir, 320, 320,
-                                                   aug=data_transforms('train',width,height), load_img=load_iamge)
+                                                   aug=self.train_transform, load_img=load_iamge)
         self.val_dataset = ClassificationDataset(self.datadir_path, self.val_data_dir, 320, 320,
-                                                 aug=data_transforms('val',width,height), load_img=load_iamge)
+                                                 aug=self.test_transform, load_img=load_iamge)
 
-        self.train_loader = DataLoader(self.train_dataset, batch_size=self.batch_size, shuffle=True, num_workers=self.nw)
-        self.val_loader = DataLoader(self.val_dataset, batch_size=self.batch_size, shuffle=False, num_workers=self.nw)
+        self.train_loader = DataLoader(self.train_dataset, batch_size=self.batch_size, shuffle=True, num_workers=self.nw,drop_last=True)
+        self.val_loader = DataLoader(self.val_dataset, batch_size=self.batch_size, shuffle=False, num_workers=self.nw,drop_last=True)
 
         self.cirterion = nn.CrossEntropyLoss()
-        self.optimizer = optim.Adam(self.model.parameters(), lr=0.001)
+        self.optimizer = getoptim(optimizer, self.model.parameters(),self.lr)
 
     def train(self):
+        with open('log/{}_train_log.txt'.format(self.modelname), "w", encoding="utf-8") as f:
+            f.write('')
+            f.close()
         train_data_size = len(self.train_dataset)
         val_data_size = len(self.val_dataset)
         print("训练数据集的长度为：{}".format(train_data_size))
@@ -124,7 +134,7 @@ class Classification_Train():
                 torch.save(self.model.state_dict(), save_path)
                 print("best model is save")
 
-            with open('log/train_log.txt',"a+", encoding="utf-8") as f:
+            with open('log/{}_train_log.txt'.format(self.modelname),"a+", encoding="utf-8") as f:
                 f.write('index: {:3},epoch:{:3} train_loss:{:3f} val_loss:{:3f} train_acc:{:3f} val_acc:{:3f}\n'.format(i,epoch_list[i],train_loss_list[i],val_loss_list[i],train_accurate_list[i],val_accurate_list[i]))
                 f.close()
 

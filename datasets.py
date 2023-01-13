@@ -1,5 +1,5 @@
 from torch.utils.data import DataLoader,Dataset
-from augmentation import load_iamge, data_transforms
+from utils.get_aug import load_iamge
 
 
 class ClassificationDataset(Dataset):

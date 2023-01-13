@@ -83,7 +83,7 @@ def getModel(model,classes):
     ##efficientnetv2
     if model == "efficientnets":
         model = efficientnetv2_s(num_classes=classes)
-    if model == "efficientnetsm":
+    if model == "efficientnetm":
         model = efficientnetv2_m(num_classes=classes)
     if model == "efficientnetl":
         model = efficientnetv2_l(num_classes=classes)
