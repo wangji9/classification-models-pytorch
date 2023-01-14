@@ -66,6 +66,6 @@ python main.py
 | efficientnetb0+Adam+epoch=100+batch_size=256+nw=8 |          |             |             |               |                |
 | ----------------------------- | -------- | ----------- | ----------- | ------------- | -------------- |
 | Data Augmentations            | baseline | autoaugment | randaugment | randomerasing | trivialaugment |
-| Accuracy                      | 83.24    | 88.53       | 88.04       | 83.14         | 88.53          |
+| Accuracy(%)                      | 83.24    | 88.53       | 88.04       | 83.14         | 88.53          |
 ## Reference  
 https://github.com/megvii-model/ShuffleNet-Series
