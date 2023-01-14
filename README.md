@@ -65,10 +65,10 @@ python main.py
 ![Loss_efficientnetb0_adam_baseline](https://user-images.githubusercontent.com/66462413/212460755-4b003811-0b1b-43c2-bce0-7f0a9076f6a4.jpg)
 ![Loss_efficientnetb0_adam_randaugment](https://user-images.githubusercontent.com/66462413/212460756-9b6201cd-9076-4b8e-afb4-10c12b13474c.jpg)
 ![Loss_efficientnetb0_adam_randomerasing](https://user-images.githubusercontent.com/66462413/212460758-377eaeb3-7724-4cd4-91e2-62e4c4e66a60.jpg)
-efficientnetb0+Adam+epoch=100					
-Data Augmentations	baseline	autoaugment	randaugment	randomerasing	trivialaugment
-Accuracy	83.24	88.53	88.04	83.14	88.53
-![image](https://user-images.githubusercontent.com/66462413/212461341-976d0c49-12ba-43c4-9a4e-dd55ef1238fb.png)
-
+# Test  
+| efficientnetb0+Adam+epoch=100 |          |             |             |               |                |
+| ----------------------------- | -------- | ----------- | ----------- | ------------- | -------------- |
+| Data Augmentations            | baseline | autoaugment | randaugment | randomerasing | trivialaugment |
+| Accuracy                      | 83.24    | 88.53       | 88.04       | 83.14         | 88.53          |
 ## Reference  
 https://github.com/megvii-model/ShuffleNet-Series
