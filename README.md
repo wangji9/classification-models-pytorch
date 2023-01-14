@@ -49,9 +49,20 @@ optional arguments:
 python main.py --train  
 ## Test  
 python main.py  
-## Result  
+## Efficientnetb0 Result  
 ![Accuracy_efficientnetb0](https://user-images.githubusercontent.com/66462413/212268847-251a5939-79f3-4c56-a71e-5929115984db.jpg)
-![Loss_efficientnetb0](https://user-images.githubusercontent.com/66462413/212268882-35e8a6c7-a54a-49f5-a158-fd934f85a758.jpg)
+![Loss_efficientnetb0](https://user-images.githubusercontent.com/66462413/212268882-35e8a6c7-a54a-49f5-a158-fd934f85a758.jpg)  
+## Different data augmentations methods  
+![Accuracy_efficientnetb0_adam_baseline](https://user-images.githubusercontent.com/66462413/212460726-9d803f35-89f3-4545-98ec-08215c521490.jpg)
+![Accuracy_efficientnetb0_adam_randaugment](https://user-images.githubusercontent.com/66462413/212460728-db640385-200b-4f92-9e04-4c33b57e3c72.jpg)
+![Accuracy_efficientnetb0_adam_randomerasing](https://user-images.githubusercontent.com/66462413/212460730-23c58189-e956-4b27-9265-4bab56dbca8c.jpg)
+![Accuracy_efficientnetb0_adam_trivialaugment](https://user-images.githubusercontent.com/66462413/212460733-5ab9f5f3-1d6f-4685-86a4-ba869688ac40.jpg)
+![Accuracy_efficientnetb0_adam_autoaugment](https://user-images.githubusercontent.com/66462413/212460735-568ba05e-f517-4be3-afa0-4a8f3797a006.jpg)
+![Loss_efficientnetb0_adam_trivialaugment](https://user-images.githubusercontent.com/66462413/212460751-57c01eb6-6d11-4c84-a39e-0b3f83a5754b.jpg)
+![Loss_efficientnetb0_adam_autoaugment](https://user-images.githubusercontent.com/66462413/212460754-ac6f6d73-d546-4bc2-9c27-bf1b0add4057.jpg)
+![Loss_efficientnetb0_adam_baseline](https://user-images.githubusercontent.com/66462413/212460755-4b003811-0b1b-43c2-bce0-7f0a9076f6a4.jpg)
+![Loss_efficientnetb0_adam_randaugment](https://user-images.githubusercontent.com/66462413/212460756-9b6201cd-9076-4b8e-afb4-10c12b13474c.jpg)
+![Loss_efficientnetb0_adam_randomerasing](https://user-images.githubusercontent.com/66462413/212460758-377eaeb3-7724-4cd4-91e2-62e4c4e66a60.jpg)
 
 ## Reference  
 https://github.com/megvii-model/ShuffleNet-Series
